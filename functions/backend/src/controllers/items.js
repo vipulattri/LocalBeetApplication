@@ -7,39 +7,84 @@ export const createItem = async (req, res) => {
   const table = datastore.table('Items');
 
   const {
+    ItemCode,
+    type,
     itemName,
-    category,
+    SKU,
     unitOfMeasure,
-    price,
-    currentStock,
-    description
+    dimension ,
+    manufactures,
+    weight,
+    brand,
+    UPC,
+    MPN,
+    EAN,
+    ISBN,
+    sellingPrice,
+    saleAccount,
+    saleDescription,
+    costPrice,
+    purchaseAccount,
+    purchaseDescription,
+    preferedVendor,
+    inventoryAccount,
+    openingStock,
+    reorderPoint,
+    inventoryValuationMethod,
+    openingStockRateUnit
+
   } = req.body;
 
-  if (!itemModel.requiredFields.every(field => req.body[field] !== undefined)) {
-    return res.status(400).json({ error: 'Missing required fields' });
-  }
+  // if (!itemModel.requiredFields.every(field => req.body[field] !== undefined)) {
+  //   return res.status(400).json({ error: 'Missing required fields' });
+  // }
 
-  if (!itemModel.allowedCategories.includes(category)) {
-    return res.status(400).json({ error: 'Invalid category value' });
-  }
+  // if (!itemModel.allowedCategories.includes(category)) {
+  //   return res.status(400).json({ error: 'Invalid category value' });
+  // }
 
-  if (!itemModel.allowedUnits.includes(unitOfMeasure)) {
-    return res.status(400).json({ error: 'Invalid unit of measure' });
-  }
+  // if (!itemModel.allowedUnits.includes(unitOfMeasure)) {
+  //   return res.status(400).json({ error: 'Invalid unit of measure' });
+  // }
 
   const itemCode = generateItemCode();
   const now = new Date();
 
   const rowData = {
-    itemCode,
+    // itemCode,
+    // itemName,
+    // category,
+    // unitOfMeasure,
+    // price: price || 0,
+    // currentStock: currentStock || 0,
+    // description: description || null,
+    // // createdAt: now,
+    // // updatedAt: now
+    itemCode : ItemCode,
+    type,
     itemName,
-    category,
+    SKU,
     unitOfMeasure,
-    price: price || 0,
-    currentStock: currentStock || 0,
-    description: description || null,
-    // createdAt: now,
-    // updatedAt: now
+    dimension ,
+    manufactures,
+    weight,
+    brand,
+    UPC,
+    MPN,
+    EAN,
+    ISBN,
+    sellingPrice,
+    saleAccount,
+    saleDescription,
+    costPrice,
+    purchaseAccount,
+    purchaseDescription,
+    preferedVendor,
+    inventoryAccount,
+    openingStock,
+    reorderPoint,
+    inventoryValuationMethod,
+    openingStockRateUnit
   };
 
   try {
