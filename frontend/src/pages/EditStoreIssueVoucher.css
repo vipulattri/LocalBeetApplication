@@ -1,0 +1,139 @@
+.edit-voucher-page {
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #f9fafb;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.edit-voucher-page h1 {
+  margin-bottom: 20px;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+}
+
+.edit-voucher-page .error {
+  color: #d93025;
+  background: #fdecea;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Form styles */
+.edit-voucher-page .voucher-form label {
+  display: block;
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: #222;
+}
+
+.edit-voucher-page .voucher-form input[type="text"],
+.edit-voucher-page .voucher-form input[type="date"],
+.edit-voucher-page .voucher-form input[type="number"],
+.edit-voucher-page .voucher-form select {
+  width: 100%;
+  padding: 8px 12px;
+  margin-top: 6px;
+  border: 1.5px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.edit-voucher-page .voucher-form input[type="text"]:focus,
+.edit-voucher-page .voucher-form input[type="date"]:focus,
+.edit-voucher-page .voucher-form input[type="number"]:focus,
+.edit-voucher-page .voucher-form select:focus {
+  border-color: #0053ba;
+  outline: none;
+}
+
+/* Items section */
+.edit-voucher-page .items-section {
+  border: 1px solid #ddd;
+  padding: 15px 20px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  background-color: #fff;
+}
+
+.edit-voucher-page .items-section legend {
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #0053ba;
+  font-size: 1.1rem;
+}
+
+.edit-voucher-page .item-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.edit-voucher-page .item-row input[type="text"],
+.edit-voucher-page .item-row input[type="number"] {
+  flex: 1;
+}
+
+.edit-voucher-page .btn-remove {
+  background: #d93025;
+  border: none;
+  color: white;
+  font-weight: 700;
+  font-size: 1.3rem;
+  line-height: 1;
+  padding: 0 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.edit-voucher-page .btn-remove:hover {
+  background: #a8221d;
+}
+
+.edit-voucher-page .btn-add {
+  background: #0053ba;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  margin-top: 10px;
+}
+
+.edit-voucher-page .btn-add:hover {
+  background: #003f8a;
+}
+
+.edit-voucher-page .btn-primary {
+  display: block;
+  width: 100%;
+  padding: 12px 0;
+  background-color: #0053ba;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.edit-voucher-page .btn-primary:disabled {
+  background-color: #94b6f8;
+  cursor: not-allowed;
+}
+
+.edit-voucher-page .btn-primary:hover:not(:disabled) {
+  background-color: #003f8a;
+}

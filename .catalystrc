@@ -1,0 +1,30 @@
+{
+  "defaults": {
+    "project": 1,
+    "env": 1
+  },
+  "actives": {
+    "project": 1,
+    "env": 1
+  },
+  "projects": [
+    {
+      "idx": 1,
+      "id": "36221000000011108",
+      "name": "recipe-management",
+      "domain": {
+        "id": "10101662234",
+        "name": "recipe-management-892996589.development"
+      },
+      "timezone": "Asia/Riyadh",
+      "env": [
+        {
+          "idx": 1,
+          "id": "892996589",
+          "name": "Development",
+          "type": 3
+        }
+      ]
+    }
+  ]
+}
