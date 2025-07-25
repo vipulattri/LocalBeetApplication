@@ -588,3 +588,623 @@ Response Headers: {"server":"ZGS","date":"Fri, 25 Jul 2025 08:25:56 GMT","conten
 [debug] [2025-07-25T08:25:56.176Z] : Response Body : {"status":"failure","data":{"error_code":"INPUT_SIZE_MORE_THAN_ALLOWED","message":"Please check if the size of the input is in the correct range"}}
 
 [debug] [2025-07-25T08:25:56.180Z] : Unable to send debug log to server: HTTP Error: 400, Please check if the size of the input is in the correct range
+[debug] [2025-07-25T10:53:48.382Z] : 
+[debug] [2025-07-25T10:53:48.383Z] : ----------------------------------------------------------------------
+[debug] [2025-07-25T10:53:48.383Z] : Command:      C:\Program Files\nodejs\node.exe C:\Users\ACER\AppData\Roaming\npm\node_modules\zcatalyst-cli\lib\bin\catalyst.js serve
+[debug] [2025-07-25T10:53:48.383Z] : CLI Version:  1.20.0
+[debug] [2025-07-25T10:53:48.384Z] : Platform:     win32
+[debug] [2025-07-25T10:53:48.384Z] : Node Version: v22.17.0
+[debug] [2025-07-25T10:53:48.384Z] : Time:         Fri Jul 25 2025 16:23:48 GMT+0530 (India Standard Time)
+[debug] [2025-07-25T10:53:48.384Z] : ----------------------------------------------------------------------
+[debug] [2025-07-25T10:53:48.384Z] : 
+[debug] [2025-07-25T10:53:48.776Z] : > authorizing via signed-in user option
+[debug] [2025-07-25T10:53:48.777Z] : > command requires scopes: ["ZohoCatalyst.projects.ALL","ZohoCatalyst.apigateway.apis.READ","ZohoCatalyst.apigateway.READ","ZohoCatalyst.segments.ALL","ZohoCatalyst.cache.READ","ZohoCatalyst.cache.CREATE","ZohoCatalyst.cache.DELETE","ZohoCatalyst.projects.ALL","ZohoCatalyst.cron.ALL","ZohoCatalyst.zcql.CREATE","ZohoCatalyst.projects.users.READ","ZohoCatalyst.projects.users.CREATE","ZohoCatalyst.projects.users.DELETE","ZohoCatalyst.projects.users.UPDATE","ZohoCatalyst.authentication.CREATE","ZohoCatalyst.email.CREATE","ZohoCatalyst.tables.ALL","ZohoCatalyst.tables.rows.ALL","ZohoCatalyst.tables.columns.ALL","ZohoCatalyst.tables.bulk.CREATE","ZohoCatalyst.tables.bulk.READ","ZohoCatalyst.folders.ALL","ZohoCatalyst.files.CREATE","ZohoCatalyst.files.READ","ZohoCatalyst.files.DELETE","ZohoCatalyst.functions.ALL","ZohoCatalyst.functions.EXECUTE","ZohoCatalyst.eventlistners.ALL","ZohoCatalyst.eventlisteners.produce","ZohoCatalyst.security.rules.Read","ZohoCatalyst.security.rules.Update","ZohoCatalyst.notifications.mobile","ZohoCatalyst.notifications.web","ZohoCatalyst.search.READ","ZohoCatalyst.mlkit.READ","QuickML.deployment.READ","ZohoCatalyst.pdfshot.execute","ZohoCatalyst.dataverse.execute","ZohoCatalyst.circuits.execution.DELETE","ZohoCatalyst.circuits.execution.READ","ZohoCatalyst.circuits.execute","ZohoCatalyst.appsail.Read","ZohoCatalyst.jobpool.READ","ZohoCatalyst.job.ALL","ZohoCatalyst.nosql.READ","ZohoCatalyst.nosql.rows.ALL"]
+[debug] [2025-07-25T10:53:48.788Z] : > refreshing access token <
+[debug] [2025-07-25T10:53:48.789Z] : >>>> HTTP REQUEST : POST https://accounts.zoho.com/oauth/v2/token 
+<request body omitted>
+
+[debug] [2025-07-25T10:53:49.797Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Fri, 25 Jul 2025 10:53:50 GMT","content-type":"application/json;charset=UTF-8","content-length":"2362","connection":"keep-alive","cache-control":"no-store","x-content-type-options":"nosniff","pragma":"no-cache","x-frame-options":"SAMEORIGIN","vary":"accept-encoding","content-language":"en-US","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2025-07-25T10:53:49.810Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.com/baas/v1/project/36221000000011108 
+
+[debug] [2025-07-25T10:53:50.860Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Fri, 25 Jul 2025 10:53:51 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2025-07-25T10:53:50.865Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.com/baas/v1/project/36221000000011108/environment 
+
+[debug] [2025-07-25T10:53:51.227Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Fri, 25 Jul 2025 10:53:51 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2025-07-25T10:53:51.456Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.com/baas/v1/project/36221000000011108/function 
+Query params: {"type":"basicio,event,cron,applogic,integration,browser_logic,job"}
+
+[debug] [2025-07-25T10:53:51.776Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Fri, 25 Jul 2025 10:53:52 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2025-07-25T10:53:51.780Z] : unknown eol undefined hence skipping check
+[info] [2025-07-25T10:53:54.316Z] : [react-plugin]: Starting the development server...
+
+[info] [2025-07-25T10:53:54.317Z] : 
+[info] [2025-07-25T10:53:54.317Z] : ℹ Client[react-app]: Plugin : "zcatalyst-cli-plugin-react" is used for client serve
+[info] [2025-07-25T10:53:54.317Z] : 
+[info] [2025-07-25T10:53:55.159Z] : 
+[info] [2025-07-25T10:53:55.159Z] :  >>>>>>>>>>>>> AdvancedIO <<<<<<<<<<<< 
+[info] [2025-07-25T10:53:55.160Z] : ℹ backend: http://localhost:3000/server/backend/
+[info] [2025-07-25T10:53:55.160Z] : 
+[info] [2025-07-25T10:53:55.160Z] : 
+[info] [2025-07-25T10:53:55.160Z] :  >>>>>>>>>>>>> Web Client <<<<<<<<<<<<
+[info] [2025-07-25T10:53:55.161Z] : ℹ client[react-app]: http://localhost:3000/app/
+[info] [2025-07-25T10:53:55.161Z] : 
+[info] [2025-07-25T10:53:57.320Z] : [react-plugin]: Compiled successfully!
+[info] [2025-07-25T10:53:57.320Z] : [react-plugin]: 
+[info] [2025-07-25T10:53:57.321Z] : [react-plugin]: You can now view react-app in the browser.
+[info] [2025-07-25T10:53:57.321Z] : [react-plugin]: 
+[info] [2025-07-25T10:53:57.321Z] : [react-plugin]:   Local:            http://localhost:3000/app/
+[info] [2025-07-25T10:53:57.321Z] : [react-plugin]:   On Your Network:  http://192.168.1.212:3000/app/
+[info] [2025-07-25T10:53:57.321Z] : [react-plugin]: 
+[info] [2025-07-25T10:53:57.321Z] : [react-plugin]: Note that the development build is not optimized.
+[info] [2025-07-25T10:53:57.322Z] : [react-plugin]: To create a production build, use npm run build.
+[info] [2025-07-25T10:53:57.322Z] : [react-plugin]: 
+[info] [2025-07-25T11:20:32.997Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:20:34.459Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:20:34.460Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:20:35.464Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:20:36.749Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:20:36.750Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:20:42.411Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:20:43.958Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:20:43.959Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:20:47.559Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:20:49.489Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:20:49.490Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:20:50.491Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:20:51.821Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:20:51.822Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:20:53.552Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:20:55.327Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:20:55.327Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:20:56.344Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:20:57.475Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:20:57.475Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:20:59.126Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:21:00.929Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:21:00.930Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:21:03.227Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:21:04.827Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:21:04.828Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:21:49.517Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:21:50.551Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:21:50.552Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:21:51.751Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:21:53.191Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:21:53.192Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:21:54.605Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:21:56.013Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:21:56.014Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:21:57.030Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:21:58.744Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:21:58.745Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:22:00.388Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:22:01.879Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:22:01.879Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:22:02.882Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:22:04.066Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:22:04.066Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:22:05.081Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:22:07.014Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:22:07.014Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:22:17.549Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:22:19.030Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:22:19.031Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:22:22.741Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:22:24.161Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:22:24.163Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:23:58.474Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:24:01.008Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:24:01.008Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:24:36.566Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:24:39.569Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:24:39.570Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:24:40.573Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:24:42.910Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:24:42.910Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:24:47.090Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:24:49.261Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:24:49.261Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:24:50.269Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:24:52.977Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:24:52.978Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:24:53.980Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:24:56.796Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:24:56.796Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:24:57.802Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:25:00.435Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:25:00.435Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:25:01.452Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:25:03.700Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:25:03.700Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:25:05.883Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:25:08.161Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:25:08.162Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:25:10.948Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:25:13.399Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:25:13.399Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:25:14.407Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:25:16.692Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:25:16.693Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:25:17.698Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:25:20.065Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:25:20.065Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:25:21.076Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:25:23.549Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:25:23.550Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:25:24.556Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:25:27.368Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:25:27.369Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:25:28.370Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:25:30.676Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:25:30.677Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:25:57.176Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:25:59.691Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:25:59.692Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:26:07.670Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:26:10.605Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:26:10.605Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:26:11.619Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:26:14.672Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:26:14.672Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:26:30.707Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:26:33.582Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:26:33.583Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:26:34.587Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:26:37.203Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:26:37.204Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:26:38.210Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:26:41.014Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:26:41.015Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:26:42.027Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:26:45.021Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:26:45.022Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:26:46.035Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:26:48.804Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:26:48.804Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:27:18.150Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:27:21.161Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:27:21.162Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:27:25.332Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:27:27.976Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:27:27.977Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:27:34.837Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:27:37.722Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:27:37.722Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:27:38.728Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:27:41.274Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:27:41.275Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:27:45.025Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:27:47.662Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:27:47.663Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:28:00.468Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:28:02.960Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:28:02.961Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:28:03.978Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:28:06.478Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:28:06.479Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:28:08.285Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:28:11.096Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:28:11.096Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:28:12.768Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:28:15.816Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:28:15.817Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:28:16.824Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:28:19.900Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:28:19.900Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:28:50.258Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:28:53.383Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:28:53.384Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:28:58.863Z] : 
+change of src\models\itemsModel.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:29:01.492Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:29:01.493Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:30:13.446Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:30:17.372Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:30:17.372Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:30:18.376Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:30:20.533Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:30:20.533Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:30:22.161Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:30:24.988Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:30:24.988Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:30:25.996Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:30:28.074Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:30:28.075Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:30:30.603Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:30:32.950Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:30:32.950Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:30:41.083Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:30:43.783Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:30:43.783Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:32:29.939Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:32:31.931Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:32:31.931Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:33:41.476Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:33:43.976Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:33:43.977Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:34:12.439Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:34:14.433Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:34:14.433Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:34:26.662Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:34:29.265Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:34:29.267Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:34:30.283Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:34:32.904Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:34:32.905Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:34:33.915Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:34:36.821Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:34:36.822Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:34:49.557Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:34:52.277Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:34:52.277Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:35:03.798Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:35:06.324Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:35:06.324Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:35:07.337Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:35:09.702Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:35:09.703Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:35:18.807Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:35:21.091Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:35:21.092Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:35:24.929Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:35:27.454Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:35:27.454Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:35:29.513Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:35:32.061Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:35:32.062Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:35:33.072Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:35:35.300Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:35:35.301Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:35:36.309Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:35:38.574Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:35:38.574Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:35:40.106Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:35:42.612Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:35:42.613Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:35:43.619Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:35:46.041Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:35:46.041Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:35:48.958Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:35:50.935Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:35:50.935Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:35:53.325Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:35:55.483Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:35:55.486Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:35:57.065Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:35:59.094Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:35:59.095Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:36:00.106Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:36:02.848Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:36:02.849Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:36:15.039Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:36:17.124Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:36:17.124Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:37:02.739Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:37:05.166Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:37:05.167Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:37:07.934Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:37:10.657Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:37:10.658Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:37:17.142Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:37:19.256Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:37:19.256Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:37:29.317Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:37:31.689Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:37:31.690Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:37:32.703Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:37:35.554Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:37:35.555Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:37:36.570Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:37:39.324Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:37:39.324Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:37:40.341Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:37:42.920Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:37:42.920Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:37:48.071Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:37:50.423Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:37:50.423Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:37:57.079Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:37:59.620Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:37:59.621Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:38:00.622Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:38:03.335Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:38:03.336Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:38:04.419Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:38:07.022Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:38:07.022Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:38:15.749Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:38:17.801Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:38:17.802Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:38:30.187Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:38:33.251Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:38:33.252Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:38:34.263Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:38:36.868Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:38:36.868Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:38:50.800Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:38:52.725Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:38:52.725Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:38:54.095Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:38:56.332Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:38:56.332Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:39:00.162Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:39:02.083Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:39:02.083Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:39:18.282Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:39:21.322Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:39:21.322Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:39:22.333Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:39:24.908Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:39:24.908Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:39:26.676Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:39:29.101Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:39:29.103Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:39:36.873Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:39:38.208Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:39:38.208Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:39:39.212Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:39:40.700Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:39:40.701Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:39:45.630Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:39:47.151Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:39:47.152Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:39:48.166Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:39:49.568Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:39:49.569Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:39:51.466Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:39:53.149Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:39:53.150Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:39:54.595Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:39:56.066Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:39:56.067Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:39:57.072Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:39:58.297Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:39:58.297Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:39:59.302Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:40:00.809Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:40:00.809Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:40:01.824Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:40:03.238Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:40:03.239Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:40:04.256Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:40:05.572Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:40:05.574Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:40:06.577Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:40:08.078Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:40:08.078Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:40:14.570Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:40:16.185Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:40:16.185Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:40:17.818Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:40:19.038Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:40:19.038Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:40:22.765Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:40:23.852Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:40:23.852Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:40:25.634Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:40:27.345Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:40:27.345Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:40:28.351Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:40:29.772Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:40:29.774Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:40:30.791Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:40:32.572Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:40:32.572Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:40:37.231Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:40:38.618Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:40:38.619Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:42:09.530Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:42:10.714Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:42:10.714Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:42:21.812Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:42:23.466Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:42:23.467Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:42:37.185Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:42:39.201Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:42:39.202Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:43:23.377Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:43:24.838Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:43:24.839Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:44:25.858Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:44:27.278Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:44:27.279Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:44:28.903Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:44:29.995Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:44:29.996Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:49:32.729Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:49:34.044Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:49:34.045Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:49:35.258Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:49:36.509Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:49:36.510Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T11:49:39.507Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T11:49:40.659Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T11:49:40.659Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T12:04:11.262Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T12:04:12.032Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T12:04:12.033Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T12:25:17.639Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T12:25:19.201Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T12:25:19.201Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T12:25:35.378Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T12:25:37.958Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T12:25:37.960Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T12:25:38.968Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T12:25:41.616Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T12:25:41.617Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T12:26:11.481Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T12:26:15.699Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T12:26:15.701Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T12:27:42.868Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T12:27:46.255Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T12:27:46.256Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T12:27:49.540Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T12:27:52.930Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T12:27:52.934Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T12:27:57.569Z] : 
+change of src\controllers\items.js in backend detected. Preparing your function, please wait...
+[info] [2025-07-25T12:28:00.222Z] : ℹ AdvancedIO[backend]: ready!
+[info] [2025-07-25T12:28:00.222Z] : ℹ AdvancedIO[backend]: http://localhost:3000/server/backend/
+[info] [2025-07-25T12:49:36.545Z] : Shutting down server
+[info] [2025-07-25T12:49:36.606Z] : 
+[info] [2025-07-25T12:49:36.607Z] : ✔ Shutdown complete
+[debug] [2025-07-25T12:49:36.608Z] : NO ERRORS REGISTERED
+[debug] [2025-07-25T12:49:36.609Z] : EXEC ENDED with event: serve, message: success
+[debug] [2025-07-25T12:49:36.609Z] : TOTAL DURATION OF COMMAND EXEC : 6947841
+[debug] [2025-07-25T12:49:36.626Z] : > refreshing access token <
+[debug] [2025-07-25T12:49:36.628Z] : >>>> HTTP REQUEST : POST https://accounts.zoho.com/oauth/v2/token 
+<request body omitted>
+
+[debug] [2025-07-25T12:49:37.543Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Fri, 25 Jul 2025 12:49:38 GMT","content-type":"application/json;charset=UTF-8","content-length":"2362","connection":"keep-alive","cache-control":"no-store","x-content-type-options":"nosniff","pragma":"no-cache","x-frame-options":"SAMEORIGIN","vary":"accept-encoding","content-language":"en-US","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2025-07-25T12:49:37.565Z] : >>>> HTTP REQUEST : POST https://api.catalyst.zoho.com/baas/v1/cli/logs 
+<request body omitted>
+
+[debug] [2025-07-25T12:49:40.023Z] : <<<< HTTP RESPONSE : 400
+Response Headers: {"server":"ZGS","date":"Fri, 25 Jul 2025 12:49:40 GMT","content-type":"application/json;charset=ISO-8859-1","content-length":"148","connection":"keep-alive","x-content-type-options":"nosniff","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2025-07-25T12:49:40.024Z] : Response Body : {"status":"failure","data":{"error_code":"INPUT_SIZE_MORE_THAN_ALLOWED","message":"Please check if the size of the input is in the correct range"}}
+
+[debug] [2025-07-25T12:49:40.035Z] : Unable to send debug log to server: HTTP Error: 400, Please check if the size of the input is in the correct range
