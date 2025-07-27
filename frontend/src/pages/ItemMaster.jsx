@@ -31,7 +31,6 @@ const ItemMaster = () => {
     return matchesSearch && matchesCategory
   })
 
-
   const handleEdit = (item) => {
     setSelectedItem(item)
     setShowCreateForm(true)
@@ -174,7 +173,7 @@ const ItemMaster = () => {
           }}
           onSave={async (itemData) => {
             try {
-              console.log("Sending item data:", itemData) // Debug log
+              console.log("Sending item data:", itemData)
 
               if (selectedItem) {
                 const res = await fetch(`${process.env.REACT_APP_BASE_URL}/api/items/update/${selectedItem.id}`, {
@@ -225,234 +224,609 @@ const ItemMaster = () => {
 const CreateItemModal = ({ item, onClose, onSave }) => {
   const [formData, setFormData] = useState({
     itemCode: item?.itemCode || `ITM${String(Date.now()).slice(-3).padStart(3, "0")}`,
-    type: item?.type || "",
+    type: item?.type || "Goods",
     itemName: item?.itemName || "",
     SKU: item?.SKU || "",
     unitOfMeasure: item?.unitOfMeasure || "",
-    dimension: item?.dimension || "",
-    manufactures: item?.manufactures || "",
+    dimensions: item?.dimensions || { length: "", width: "", height: "" },
+    dimensionUnit: item?.dimensionUnit || "cm",
     weight: item?.weight || "",
+    weightUnit: item?.weightUnit || "kg",
+    manufacturer: item?.manufacturer || "",
     brand: item?.brand || "",
     UPC: item?.UPC || "",
     MPN: item?.MPN || "",
     EAN: item?.EAN || "",
     ISBN: item?.ISBN || "",
-    sellingPrice: Number(item?.sellingPrice || 0),
-    saleAccount: item?.saleAccount || "",
+    returnableItem: item?.returnableItem || true,
+    // Sales Information
+    salesEnabled: item?.salesEnabled || false,
+    sellingPrice: item?.sellingPrice || "",
+    saleAccount: item?.saleAccount || "Sales",
     saleDescription: item?.saleDescription || "",
-    costPrice: Number(item?.costPrice || 0),
-    purchaseAccount: item?.purchaseAccount || "",
+    // Purchase Information
+    purchaseEnabled: item?.purchaseEnabled || false,
+    costPrice: item?.costPrice || "",
+    purchaseAccount: item?.purchaseAccount || "Cost of Goods Sold",
     purchaseDescription: item?.purchaseDescription || "",
-    preferedVendor: item?.preferedVendor || "",
+    preferredVendor: item?.preferredVendor || "",
+    // Inventory Tracking
+    trackInventory: item?.trackInventory || false,
     inventoryAccount: item?.inventoryAccount || "",
-    openingStock: Number(item?.openingStock || 0),
-    reorderPoint: Number(item?.reorderPoint || 0),
     inventoryValuationMethod: item?.inventoryValuationMethod || "",
-    openingStockRateUnit: Number(item?.openingStockRateUnit || 0),
+    openingStock: item?.openingStock || "",
+    openingStockRateUnit: item?.openingStockRateUnit || "",
+    reorderPoint: item?.reorderPoint || "",
   })
 
-  const categories = ["Hardware", "Raw Materials", "Electrical", "Components", "Sealing", "Tools", "Chemicals"]
-  const units = ["pcs", "kg", "m", "l", "set", "box", "roll", "sheet", "ft", "cm"]
+  const units = ["box", "cm", "dz", "ft", "g", "in", "kg", "km", "lb", "mg", "ml", "m", "pcs"]
+  const dimensionUnits = ["in", "cm"]
+  const weightUnits = ["kg", "g", "lb", "oz"]
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }))
+    const { name, value, type, checked } = e.target
+    
+    if (name.startsWith('dimension-')) {
+      const dimensionType = name.split('-')[1]
+      setFormData(prev => ({
+        ...prev,
+        dimensions: {
+          ...prev.dimensions,
+          [dimensionType]: value
+        }
+      }))
+    } else {
+      setFormData(prev => ({
+        ...prev,
+        [name]: type === 'checkbox' ? checked : value,
+      }))
+    }
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    // Validate required fields
-    if (!formData.itemCode || !formData.itemName || !formData.category || !formData.unitOfMeasure) {
+    if (!formData.itemName || !formData.unitOfMeasure) {
       alert("Please fill in all required fields")
       return
     }
 
     const itemData = {
-      itemCode: formData.itemCode.trim(),
-      itemName: formData.itemName.trim(),
-      category: formData.category,
-      unitOfMeasure: formData.unitOfMeasure,
-      price: Number.parseFloat(formData.price) || 0,
-      currentStock: Number.parseInt(formData.currentStock) || 0,
-      description: formData.description.trim(),
+      ...formData,
       lastUpdated: new Date().toISOString().split("T")[0],
     }
 
-    console.log("Form data being submitted:", itemData) // Debug log
+    console.log("Form data being submitted:", itemData)
     onSave(itemData)
   }
 
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+      <div className="modal-content modern-modal" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
-          <h2 className="modal-title">{item ? "Edit Item" : "Create Item"}</h2>
+          <h2 className="modal-title">{item ? "Edit Item" : "New Item"}</h2>
           <button className="modal-close" onClick={onClose}>✕</button>
         </div>
 
-        <form onSubmit={handleSubmit} className="item-form">
-          <div className="form-grid">
-            <div className="form-group">
-              <label className="form-label">Item Code<span className="form-help">A unique identifier for the item.</span></label>
-              <input type="text" name="ItemCode " value={formData.itemCode} onChange={handleInputChange} className="form-input item-code" required />
+        <form onSubmit={handleSubmit} className="item-form modern-form">
+          {/* Basic Information Section */}
+          <div className="form-section">
+            <div className="form-row">
+              <div className="form-group">
+                <label className="form-label">
+                  Type
+                  <span className="help-icon" title="Select item type">?</span>
+                </label>
+                <div className="radio-group">
+                  <label className="radio-option">
+                    <input
+                      type="radio"
+                      name="type"
+                      value="Goods"
+                      checked={formData.type === "Goods"}
+                      onChange={handleInputChange}
+                    />
+                    <span className="radio-custom"></span>
+                    Goods
+                  </label>
+                  <label className="radio-option">
+                    <input
+                      type="radio"
+                      name="type"
+                      value="Service"
+                      checked={formData.type === "Service"}
+                      onChange={handleInputChange}
+                    />
+                    <span className="radio-custom"></span>
+                    Service
+                  </label>
+                </div>
+              </div>
             </div>
 
-            <div className="form-group">
-              <label className="form-label">Item Name<span className="form-help">The name of the item.</span></label>
-              <input type="text" name="itemName" value={formData.itemName} onChange={handleInputChange} className="form-input" placeholder="Steel Bolt" required />
+            <div className="form-row">
+              <div className="form-group">
+                <label className="form-label required">Name</label>
+                <input
+                  type="text"
+                  name="itemName"
+                  value={formData.itemName}
+                  onChange={handleInputChange}
+                  className="form-input"
+                  required
+                />
+              </div>
             </div>
 
-            <div className="form-group">
-              <label className="form-label">SKU<span className="form-help">The name of the item.</span></label>
-              <input type="text" name="SKU" value={formData.SKU} onChange={handleInputChange} className="form-input" placeholder="Steel Bolt" required />
-            </div>
-            <div className="form-group" >
-              <label className="form-label">Units<span className="form-help">The name of the item.</span></label>
-              <select id="units" name="units" className="form-input" style={{ width: "100%", }}>
-                <option value="box">box</option>
-                <option value="cm">cm</option>
-                <option value="dz">dz</option>
-                <option value="ft">ft</option>
-                <option value="g">g</option>
-                <option value="in">in</option>
-                <option value="kg">kg</option>
-                <option value="km">km</option>
-                <option value="lb">lb</option>
-                <option value="mg">mg</option>
-                <option value="ml">ml</option>
-                <option value="m">m</option>
-                <option value="pcs">pcs</option>
-              </select>
-
+            <div className="form-row">
+              <div className="form-group">
+                <label className="form-label">
+                  SKU
+                  <span className="help-icon" title="Stock Keeping Unit">?</span>
+                </label>
+                <input
+                  type="text"
+                  name="SKU"
+                  value={formData.SKU}
+                  onChange={handleInputChange}
+                  className="form-input"
+                />
+              </div>
             </div>
 
-            <div className="form-group" >
-              <label className="form-label">Dimensions<span className="form-help">The name of the item.</span></label>
-              <select id="units" name="dimension" className="form-input" style={{ width: "100%", }}>
-                <option value="in">in</option>
-                <option value="cm">cm</option>
-
-              </select>
-
-            </div>
-            <div className="form-group">
-              <label className="form-label">Weight<span className="form-help">The name of the item.</span></label>
-              <select id="units" name="weight" className="form-input" style={{ width: "100%", }}>
-                <option value="kg">kg</option>
-                <option value="g">g</option>
-                <option value="lb">lb</option>
-                <option value="oz">oz</option>
+            <div className="form-row">
+              <div className="form-group">
+                <label className="form-label required">
+                  Unit
+                  <span className="help-icon" title="Unit of measurement">?</span>
+                </label>
+                <select
+                  name="unitOfMeasure"
+                  value={formData.unitOfMeasure}
+                  onChange={handleInputChange}
+                  className="form-select"
+                  required
+                >
+                  <option value="">Select or type to add</option>
+                  {units.map(unit => (
+                    <option key={unit} value={unit}>{unit}</option>
+                  ))}
                 </select>
+              </div>
             </div>
 
-            <div className="form-group">
-              <label className="form-label">Manufacturer<span className="form-help">The name of the item.</span></label>
-              <input type="text" name="manufactures" value={formData.manufactures} onChange={handleInputChange} className="form-input" placeholder="Steel Bolt" required />
+            <div className="form-row">
+              <div className="form-group">
+                <label className="checkbox-label">
+                  <input
+                    type="checkbox"
+                    name="returnableItem"
+                    checked={formData.returnableItem}
+                    onChange={handleInputChange}
+                    className="form-checkbox"
+                  />
+                  <span className="checkbox-custom"></span>
+                  Returnable Item
+                  <span className="help-icon" title="Can this item be returned?">?</span>
+                </label>
+              </div>
             </div>
-
-            <div className="form-group">
-              <label className="form-label">Brand<span className="form-help">The name of the item.</span></label>
-              <input type="text" name="brand" value={formData.brand} onChange={handleInputChange} className="form-input" placeholder="Steel Bolt" required />
-            </div>
-
-
-            <div className="form-group">
-              <label className="form-label">UPC<span className="form-help">The name of the item.</span></label>
-              <input type="number" name="UPC" value={formData.UPC} onChange={handleInputChange} className="form-input" placeholder="Steel Bolt" required />
-            </div>
-
-            <div className="form-group">
-              <label className="form-label">MPN<span className="form-help">The name of the item.</span></label>
-              <input type="number" name="MPN" value={formData.MPN} onChange={handleInputChange} className="form-input" placeholder="Steel Bolt" required />
-            </div>
-
-            <div className="form-group">
-              <label className="form-label">EAN<span className="form-help">The name of the item.</span></label>
-              <input type="number" name="EAN" value={formData.EAN} onChange={handleInputChange} className="form-input" placeholder="Steel Bolt" required />
-            </div>
-
-            <div className="form-group">
-              <label className="form-label">ISBN<span className="form-help">The name of the item.</span></label>
-              <input type="number" name="ISBN" value={formData.ISBN} onChange={handleInputChange} className="form-input" placeholder="Steel Bolt" required />
-            </div>
-
-            <div className="form-group">
-              <label className="form-label">Selling Price<span className="form-help">The name of the item.</span></label>
-              <input type="text" name="sellingPrice" value={formData.sellingPrice} onChange={handleInputChange} className="form-input" placeholder="Steel Bolt" required />
-            </div>
-
-            <div className="form-group">
-              <label className="form-label">Cost Price<span className="form-help">The name of the item.</span></label>
-              <input type="text" name="costPrice" value={formData.costPrice} onChange={handleInputChange} className="form-input" placeholder="Steel Bolt" required />
-            </div>
-            <div className="form-group">
-              <label className="form-label">Account<span className="form-help">The name of the item.</span></label>
-              <input type="text" name="saleAccount" value={formData.saleAccount} onChange={handleInputChange} className="form-input" placeholder="Steel Bolt" required />
-            </div>
-
-            <div className="form-group">
-              <label className="form-label">Account<span className="form-help">The name of the item.</span></label>
-              <input type="text" name="purchaseAccount" value={formData.purchaseAccount} onChange={handleInputChange} className="form-input" placeholder="Steel Bolt" required />
-            </div>
-
-            <div className="form-group">
-              <label className="form-label">Description<span className="form-help">The name of the item.</span></label>
-              <input type="text" name="saleDescription" value={formData.description} onChange={handleInputChange} className="form-input" placeholder="Steel Bolt" required />
-            </div>
-
-            <div className="form-group">
-              <label className="form-label">Preferred Vendor<span className="form-help">The name of the item.</span></label>
-              <input type="text" name="preferedVendor" value={formData.preferedVendor} onChange={handleInputChange} className="form-input" placeholder="Steel Bolt" required />
-            </div>
-
-
-
-            <div className="form-group">
-              <label className="form-label">Cost Price<span className="form-help">The name of the item.</span></label>
-              <input type="text" name="costPrice" value={formData.costPrice} onChange={handleInputChange} className="form-input" placeholder="Steel Bolt" required />
-            </div>
-
-
-            <div className="form-group">
-              <label className="form-label">Inventory Account<span className="form-help">The name of the item.</span></label>
-              <input type="text" name="inventoryAccount" value={formData.inventoryAccount} onChange={handleInputChange} className="form-input" placeholder="Steel Bolt" required />
-            </div>
-
-            <div className="form-group">
-              <label className="form-label">Inventory Valuation Method<span className="form-help">The name of the item.</span></label>
-              <input type="text" name="inventoryValuationMethod" value={formData.inventoryValuationMethod} onChange={handleInputChange} className="form-input" placeholder="Steel Bolt" required />
-            </div>
-
-            <div className="form-group">
-              <label className="form-label">Opening Stock<span className="form-help">The name of the item.</span></label>
-              <input type="text" name="openingStock" value={formData.openingStock} onChange={handleInputChange} className="form-input" placeholder="Steel Bolt" required />
-            </div>
-
-            <div className="form-group">
-              <label className="form-label">Opening Stock Rate per Unit<span className="form-help">The name of the item.</span></label>
-              <input type="text" name="openingStockRateUnit" value={formData.openingStockRateUnit} onChange={handleInputChange} className="form-input" placeholder="Steel Bolt" required />
-            </div>
-
-            <div className="form-group">
-              <label className="form-label">Reorder Point<span className="form-help">The name of the item.</span></label>
-              <input type="text" name="reorderPoint" value={formData.reorderPoint} onChange={handleInputChange} className="form-input" placeholder="Steel Bolt" required />
-            </div>
-
-
-
-
-
-
-
           </div>
 
+          {/* Dimensions and Weight Section */}
+          <div className="form-section">
+            <div className="form-row">
+              <div className="form-group dimensions-group">
+                <label className="form-label">
+                  Dimensions
+                  <span className="form-help">(Length X Width X Height)</span>
+                </label>
+                <div className="dimensions-input">
+                  <input
+                    type="text"
+                    name="dimension-length"
+                    value={formData.dimensions.length}
+                    onChange={handleInputChange}
+                    className="form-input dimension-field"
+                    placeholder="x"
+                  />
+                  <span className="dimension-separator">×</span>
+                  <input
+                    type="text"
+                    name="dimension-width"
+                    value={formData.dimensions.width}
+                    onChange={handleInputChange}
+                    className="form-input dimension-field"
+                    placeholder="x"
+                  />
+                  <span className="dimension-separator">×</span>
+                  <input
+                    type="text"
+                    name="dimension-height"
+                    value={formData.dimensions.height}
+                    onChange={handleInputChange}
+                    className="form-input dimension-field"
+                    placeholder="x"
+                  />
+                  <select
+                    name="dimensionUnit"
+                    value={formData.dimensionUnit}
+                    onChange={handleInputChange}
+                    className="form-select dimension-unit"
+                  >
+                    {dimensionUnits.map(unit => (
+                      <option key={unit} value={unit}>{unit}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <div className="form-group">
+                <label className="form-label">Weight</label>
+                <div className="weight-input">
+                  <input
+                    type="text"
+                    name="weight"
+                    value={formData.weight}
+                    onChange={handleInputChange}
+                    className="form-input weight-field"
+                  />
+                  <select
+                    name="weightUnit"
+                    value={formData.weightUnit}
+                    onChange={handleInputChange}
+                    className="form-select weight-unit"
+                  >
+                    {weightUnits.map(unit => (
+                      <option key={unit} value={unit}>{unit}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Product Details Section */}
+          <div className="form-section">
+            <div className="form-row">
+              <div className="form-group">
+                <label className="form-label">Manufacturer</label>
+                <select
+                  name="manufacturer"
+                  value={formData.manufacturer}
+                  onChange={handleInputChange}
+                  className="form-select"
+                >
+                  <option value="">Select or Add Manufacturer</option>
+                </select>
+              </div>
+
+              <div className="form-group">
+                <label className="form-label">Brand</label>
+                <select
+                  name="brand"
+                  value={formData.brand}
+                  onChange={handleInputChange}
+                  className="form-select"
+                >
+                  <option value="">Select or Add Brand</option>
+                </select>
+              </div>
+            </div>
+
+            <div className="form-row">
+              <div className="form-group">
+                <label className="form-label">
+                  UPC
+                  <span className="help-icon" title="Universal Product Code">?</span>
+                </label>
+                <input
+                  type="text"
+                  name="UPC"
+                  value={formData.UPC}
+                  onChange={handleInputChange}
+                  className="form-input"
+                />
+              </div>
+
+              <div className="form-group">
+                <label className="form-label">
+                  MPN
+                  <span className="help-icon" title="Manufacturer Part Number">?</span>
+                </label>
+                <input
+                  type="text"
+                  name="MPN"
+                  value={formData.MPN}
+                  onChange={handleInputChange}
+                  className="form-input"
+                />
+              </div>
+            </div>
+
+            <div className="form-row">
+              <div className="form-group">
+                <label className="form-label">
+                  EAN
+                  <span className="help-icon" title="European Article Number">?</span>
+                </label>
+                <input
+                  type="text"
+                  name="EAN"
+                  value={formData.EAN}
+                  onChange={handleInputChange}
+                  className="form-input"
+                />
+              </div>
+
+              <div className="form-group">
+                <label className="form-label">
+                  ISBN
+                  <span className="help-icon" title="International Standard Book Number">?</span>
+                </label>
+                <input
+                  type="text"
+                  name="ISBN"
+                  value={formData.ISBN}
+                  onChange={handleInputChange}
+                  className="form-input"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Sales Information Section */}
+          <div className="form-section">
+            <div className="section-header">
+              <label className="checkbox-label section-toggle">
+                <input
+                  type="checkbox"
+                  name="salesEnabled"
+                  checked={formData.salesEnabled}
+                  onChange={handleInputChange}
+                  className="form-checkbox"
+                />
+                <span className="checkbox-custom"></span>
+                Sales Information
+              </label>
+            </div>
+
+            {formData.salesEnabled && (
+              <div className="subsection">
+                <div className="form-row">
+                  <div className="form-group">
+                    <label className="form-label">Selling Price</label>
+                    <div className="price-input">
+                      <span className="currency-symbol">KWD</span>
+                      <input
+                        type="number"
+                        name="sellingPrice"
+                        value={formData.sellingPrice}
+                        onChange={handleInputChange}
+                        className="form-input price-field"
+                        step="0.01"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="form-row">
+                  <div className="form-group">
+                    <label className="form-label">Account</label>
+                    <select
+                      name="saleAccount"
+                      value={formData.saleAccount}
+                      onChange={handleInputChange}
+                      className="form-select"
+                    >
+                      <option value="Sales">Sales</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="form-row">
+                  <div className="form-group">
+                    <label className="form-label">Description</label>
+                    <textarea
+                      name="saleDescription"
+                      value={formData.saleDescription}
+                      onChange={handleInputChange}
+                      className="form-textarea"
+                      rows="3"
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Purchase Information Section */}
+          <div className="form-section">
+            <div className="section-header">
+              <label className="checkbox-label section-toggle">
+                <input
+                  type="checkbox"
+                  name="purchaseEnabled"
+                  checked={formData.purchaseEnabled}
+                  onChange={handleInputChange}
+                  className="form-checkbox"
+                />
+                <span className="checkbox-custom"></span>
+                Purchase Information
+              </label>
+            </div>
+
+            {formData.purchaseEnabled && (
+              <div className="subsection">
+                <div className="form-row">
+                  <div className="form-group">
+                    <label className="form-label">Cost Price</label>
+                    <div className="price-input">
+                      <span className="currency-symbol">KWD</span>
+                      <input
+                        type="number"
+                        name="costPrice"
+                        value={formData.costPrice}
+                        onChange={handleInputChange}
+                        className="form-input price-field"
+                        step="0.01"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="form-row">
+                  <div className="form-group">
+                    <label className="form-label required">Account</label>
+                    <select
+                      name="purchaseAccount"
+                      value={formData.purchaseAccount}
+                      onChange={handleInputChange}
+                      className="form-select"
+                    >
+                      <option value="Cost of Goods Sold">Cost of Goods Sold</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="form-row">
+                  <div className="form-group">
+                    <label className="form-label">Description</label>
+                    <textarea
+                      name="purchaseDescription"
+                      value={formData.purchaseDescription}
+                      onChange={handleInputChange}
+                      className="form-textarea"
+                      rows="3"
+                    />
+                  </div>
+                </div>
+
+                <div className="form-row">
+                  <div className="form-group">
+                    <label className="form-label">Preferred Vendor</label>
+                    <select
+                      name="preferredVendor"
+                      value={formData.preferredVendor}
+                      onChange={handleInputChange}
+                      className="form-select"
+                    >
+                      <option value="">Select vendor</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Track Inventory Section */}
+          {(formData.salesEnabled || formData.purchaseEnabled) && (
+            <div className="form-section">
+              <div className="form-row">
+                <div className="form-group">
+                  <label className="checkbox-label">
+                    <input
+                      type="checkbox"
+                      name="trackInventory"
+                      checked={formData.trackInventory}
+                      onChange={handleInputChange}
+                      className="form-checkbox"
+                    />
+                    <span className="checkbox-custom"></span>
+                    Track Inventory for this item
+                    <span className="help-icon" title="Enable inventory tracking">?</span>
+                  </label>
+                  <p className="form-help-text">
+                    You cannot enable/disable inventory tracking once you've created transactions for this item
+                  </p>
+                </div>
+              </div>
+
+              {formData.trackInventory && (
+                <div className="subsection">
+                  <div className="form-row">
+                    <div className="form-group">
+                      <label className="form-label required">Inventory Account</label>
+                      <select
+                        name="inventoryAccount"
+                        value={formData.inventoryAccount}
+                        onChange={handleInputChange}
+                        className="form-select"
+                        required={formData.trackInventory}
+                      >
+                        <option value="">Select an account</option>
+                      </select>
+                    </div>
+
+                    <div className="form-group">
+                      <label className="form-label required">Inventory Valuation Method</label>
+                      <select
+                        name="inventoryValuationMethod"
+                        value={formData.inventoryValuationMethod}
+                        onChange={handleInputChange}
+                        className="form-select"
+                        required={formData.trackInventory}
+                      >
+                        <option value="">Select the valuation method</option>
+                        <option value="FIFO">FIFO (First In, First Out)</option>
+                        <option value="LIFO">LIFO (Last In, First Out)</option>
+                        <option value="Average">Average Cost</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div className="form-row">
+                    <div className="form-group">
+                      <label className="form-label">Opening Stock</label>
+                      <input
+                        type="number"
+                        name="openingStock"
+                        value={formData.openingStock}
+                        onChange={handleInputChange}
+                        className="form-input"
+                        min="0"
+                      />
+                    </div>
+
+                    <div className="form-group">
+                      <label className="form-label">Opening Stock Rate per Unit</label>
+                      <input
+                        type="number"
+                        name="openingStockRateUnit"
+                        value={formData.openingStockRateUnit}
+                        onChange={handleInputChange}
+                        className="form-input"
+                        step="0.01"
+                        min="0"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-row">
+                    <div className="form-group">
+                      <label className="form-label">Reorder Point</label>
+                      <input
+                        type="number"
+                        name="reorderPoint"
+                        value={formData.reorderPoint}
+                        onChange={handleInputChange}
+                        className="form-input"
+                        min="0"
+                      />
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
           <div className="modal-actions">
-            <button type="button" onClick={onClose} className="btn btn-secondary">Cancel</button>
-            <button type="submit" className="btn btn-primary">{item ? "Update Item" : "Create Item"}</button>
+            <button type="button" onClick={onClose} className="btn btn-secondary">
+              Cancel
+            </button>
+            <button type="submit" className="btn btn-primary">
+              {item ? "Update Item" : "Save"}
+            </button>
           </div>
         </form>
       </div>
