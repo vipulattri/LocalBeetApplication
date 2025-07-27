@@ -24,13 +24,13 @@ const ItemMaster = () => {
       (item.itemCode ?? "").toLowerCase().includes(searchTerm.toLowerCase()) ||
       (item.itemName ?? "").toLowerCase().includes(searchTerm.toLowerCase()) ||
       (item.description ?? "").toLowerCase().includes(searchTerm.toLowerCase())
-  
+
     const matchesCategory =
       filterCategory === "" || item.category === filterCategory
-  
+
     return matchesSearch && matchesCategory
   })
-  
+
 
   const handleEdit = (item) => {
     setSelectedItem(item)
@@ -175,21 +175,21 @@ const ItemMaster = () => {
           onSave={async (itemData) => {
             try {
               console.log("Sending item data:", itemData) // Debug log
-              
+
               if (selectedItem) {
                 const res = await fetch(`${process.env.REACT_APP_BASE_URL}/api/items/update/${selectedItem.id}`, {
                   method: "PUT",
                   headers: { "Content-Type": "application/json" },
                   body: JSON.stringify(itemData),
                 })
-                
+
                 if (!res.ok) {
                   const errorText = await res.text()
                   console.error("Update failed:", res.status, errorText)
                   alert(`Failed to update item: ${errorText}`)
                   return
                 }
-                
+
                 const updatedItem = await res.json()
                 setItems((prev) => prev.map((i) => (i.id === updatedItem.id ? updatedItem : i)))
               } else {
@@ -198,14 +198,14 @@ const ItemMaster = () => {
                   headers: { "Content-Type": "application/json" },
                   body: JSON.stringify(itemData),
                 })
-                
+
                 if (!res.ok) {
                   const errorText = await res.text()
                   console.error("Create failed:", res.status, errorText)
                   alert(`Failed to create item: ${errorText}`)
                   return
                 }
-                
+
                 const newItem = await res.json()
                 setItems((prev) => [...prev, newItem])
               }
@@ -225,12 +225,30 @@ const ItemMaster = () => {
 const CreateItemModal = ({ item, onClose, onSave }) => {
   const [formData, setFormData] = useState({
     itemCode: item?.itemCode || `ITM${String(Date.now()).slice(-3).padStart(3, "0")}`,
+    type: item?.type || "",
     itemName: item?.itemName || "",
-    category: item?.category || "",
+    SKU: item?.SKU || "",
     unitOfMeasure: item?.unitOfMeasure || "",
-    price: Number(item?.price || 0),
-    currentStock: Number(item?.currentStock || 0),
-    description: item?.description || "",
+    dimension: item?.dimension || "",
+    manufactures: item?.manufactures || "",
+    weight: item?.weight || "",
+    brand: item?.brand || "",
+    UPC: item?.UPC || "",
+    MPN: item?.MPN || "",
+    EAN: item?.EAN || "",
+    ISBN: item?.ISBN || "",
+    sellingPrice: Number(item?.sellingPrice || 0),
+    saleAccount: item?.saleAccount || "",
+    saleDescription: item?.saleDescription || "",
+    costPrice: Number(item?.costPrice || 0),
+    purchaseAccount: item?.purchaseAccount || "",
+    purchaseDescription: item?.purchaseDescription || "",
+    preferedVendor: item?.preferedVendor || "",
+    inventoryAccount: item?.inventoryAccount || "",
+    openingStock: Number(item?.openingStock || 0),
+    reorderPoint: Number(item?.reorderPoint || 0),
+    inventoryValuationMethod: item?.inventoryValuationMethod || "",
+    openingStockRateUnit: Number(item?.openingStockRateUnit || 0),
   })
 
   const categories = ["Hardware", "Raw Materials", "Electrical", "Components", "Sealing", "Tools", "Chemicals"]
@@ -246,13 +264,13 @@ const CreateItemModal = ({ item, onClose, onSave }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    
+
     // Validate required fields
     if (!formData.itemCode || !formData.itemName || !formData.category || !formData.unitOfMeasure) {
       alert("Please fill in all required fields")
       return
     }
-    
+
     const itemData = {
       itemCode: formData.itemCode.trim(),
       itemName: formData.itemName.trim(),
@@ -263,7 +281,7 @@ const CreateItemModal = ({ item, onClose, onSave }) => {
       description: formData.description.trim(),
       lastUpdated: new Date().toISOString().split("T")[0],
     }
-    
+
     console.log("Form data being submitted:", itemData) // Debug log
     onSave(itemData)
   }
@@ -280,7 +298,7 @@ const CreateItemModal = ({ item, onClose, onSave }) => {
           <div className="form-grid">
             <div className="form-group">
               <label className="form-label">Item Code<span className="form-help">A unique identifier for the item.</span></label>
-              <input type="text" name="itemCode" value={formData.itemCode} onChange={handleInputChange} className="form-input item-code" required />
+              <input type="text" name="ItemCode " value={formData.itemCode} onChange={handleInputChange} className="form-input item-code" required />
             </div>
 
             <div className="form-group">
@@ -289,35 +307,147 @@ const CreateItemModal = ({ item, onClose, onSave }) => {
             </div>
 
             <div className="form-group">
-              <label className="form-label">Category<span className="form-help">The category this item belongs to.</span></label>
-              <select name="category" value={formData.category} onChange={handleInputChange} className="form-select" required>
-                <option value="">Select a category</option>
-                {categories.map((category) => <option key={category} value={category}>{category}</option>)}
+              <label className="form-label">SKU<span className="form-help">The name of the item.</span></label>
+              <input type="text" name="SKU" value={formData.SKU} onChange={handleInputChange} className="form-input" placeholder="Steel Bolt" required />
+            </div>
+            <div className="form-group" >
+              <label className="form-label">Units<span className="form-help">The name of the item.</span></label>
+              <select id="units" name="units" className="form-input" style={{ width: "100%", }}>
+                <option value="box">box</option>
+                <option value="cm">cm</option>
+                <option value="dz">dz</option>
+                <option value="ft">ft</option>
+                <option value="g">g</option>
+                <option value="in">in</option>
+                <option value="kg">kg</option>
+                <option value="km">km</option>
+                <option value="lb">lb</option>
+                <option value="mg">mg</option>
+                <option value="ml">ml</option>
+                <option value="m">m</option>
+                <option value="pcs">pcs</option>
               </select>
+
             </div>
 
-            <div className="form-group">
-              <label className="form-label">Unit of Measure<span className="form-help">How this item is measured.</span></label>
-              <select name="unitOfMeasure" value={formData.unitOfMeasure} onChange={handleInputChange} className="form-select" required>
-                <option value="">Select a unit</option>
-                {units.map((unit) => <option key={unit} value={unit}>{unit}</option>)}
+            <div className="form-group" >
+              <label className="form-label">Dimensions<span className="form-help">The name of the item.</span></label>
+              <select id="units" name="dimension" className="form-input" style={{ width: "100%", }}>
+                <option value="in">in</option>
+                <option value="cm">cm</option>
+
               </select>
+
+            </div>
+            <div className="form-group">
+              <label className="form-label">Weight<span className="form-help">The name of the item.</span></label>
+              <select id="units" name="weight" className="form-input" style={{ width: "100%", }}>
+                <option value="kg">kg</option>
+                <option value="g">g</option>
+                <option value="lb">lb</option>
+                <option value="oz">oz</option>
+                </select>
             </div>
 
             <div className="form-group">
-              <label className="form-label">Price<span className="form-help">The standard price of this item.</span></label>
-              <input type="number" name="price" value={formData.price} onChange={handleInputChange} className="form-input" placeholder="0" min="0" step="0.01" required />
+              <label className="form-label">Manufacturer<span className="form-help">The name of the item.</span></label>
+              <input type="text" name="manufactures" value={formData.manufactures} onChange={handleInputChange} className="form-input" placeholder="Steel Bolt" required />
             </div>
 
             <div className="form-group">
-              <label className="form-label">Current Stock<span className="form-help">The current quantity in stock.</span></label>
-              <input type="number" name="currentStock" value={formData.currentStock} onChange={handleInputChange} className="form-input" placeholder="0" min="0" required />
+              <label className="form-label">Brand<span className="form-help">The name of the item.</span></label>
+              <input type="text" name="brand" value={formData.brand} onChange={handleInputChange} className="form-input" placeholder="Steel Bolt" required />
             </div>
 
-            <div className="form-group full-width">
-              <label className="form-label">Description<span className="form-help">Additional details about the item.</span></label>
-              <textarea name="description" value={formData.description} onChange={handleInputChange} className="form-textarea" placeholder="Enter item description" rows="3" required />
+
+            <div className="form-group">
+              <label className="form-label">UPC<span className="form-help">The name of the item.</span></label>
+              <input type="number" name="UPC" value={formData.UPC} onChange={handleInputChange} className="form-input" placeholder="Steel Bolt" required />
             </div>
+
+            <div className="form-group">
+              <label className="form-label">MPN<span className="form-help">The name of the item.</span></label>
+              <input type="number" name="MPN" value={formData.MPN} onChange={handleInputChange} className="form-input" placeholder="Steel Bolt" required />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">EAN<span className="form-help">The name of the item.</span></label>
+              <input type="number" name="EAN" value={formData.EAN} onChange={handleInputChange} className="form-input" placeholder="Steel Bolt" required />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">ISBN<span className="form-help">The name of the item.</span></label>
+              <input type="number" name="ISBN" value={formData.ISBN} onChange={handleInputChange} className="form-input" placeholder="Steel Bolt" required />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">Selling Price<span className="form-help">The name of the item.</span></label>
+              <input type="text" name="sellingPrice" value={formData.sellingPrice} onChange={handleInputChange} className="form-input" placeholder="Steel Bolt" required />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">Cost Price<span className="form-help">The name of the item.</span></label>
+              <input type="text" name="costPrice" value={formData.costPrice} onChange={handleInputChange} className="form-input" placeholder="Steel Bolt" required />
+            </div>
+            <div className="form-group">
+              <label className="form-label">Account<span className="form-help">The name of the item.</span></label>
+              <input type="text" name="saleAccount" value={formData.saleAccount} onChange={handleInputChange} className="form-input" placeholder="Steel Bolt" required />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">Account<span className="form-help">The name of the item.</span></label>
+              <input type="text" name="purchaseAccount" value={formData.purchaseAccount} onChange={handleInputChange} className="form-input" placeholder="Steel Bolt" required />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">Description<span className="form-help">The name of the item.</span></label>
+              <input type="text" name="saleDescription" value={formData.description} onChange={handleInputChange} className="form-input" placeholder="Steel Bolt" required />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">Preferred Vendor<span className="form-help">The name of the item.</span></label>
+              <input type="text" name="preferedVendor" value={formData.preferedVendor} onChange={handleInputChange} className="form-input" placeholder="Steel Bolt" required />
+            </div>
+
+
+
+            <div className="form-group">
+              <label className="form-label">Cost Price<span className="form-help">The name of the item.</span></label>
+              <input type="text" name="costPrice" value={formData.costPrice} onChange={handleInputChange} className="form-input" placeholder="Steel Bolt" required />
+            </div>
+
+
+            <div className="form-group">
+              <label className="form-label">Inventory Account<span className="form-help">The name of the item.</span></label>
+              <input type="text" name="inventoryAccount" value={formData.inventoryAccount} onChange={handleInputChange} className="form-input" placeholder="Steel Bolt" required />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">Inventory Valuation Method<span className="form-help">The name of the item.</span></label>
+              <input type="text" name="inventoryValuationMethod" value={formData.inventoryValuationMethod} onChange={handleInputChange} className="form-input" placeholder="Steel Bolt" required />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">Opening Stock<span className="form-help">The name of the item.</span></label>
+              <input type="text" name="openingStock" value={formData.openingStock} onChange={handleInputChange} className="form-input" placeholder="Steel Bolt" required />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">Opening Stock Rate per Unit<span className="form-help">The name of the item.</span></label>
+              <input type="text" name="openingStockRateUnit" value={formData.openingStockRateUnit} onChange={handleInputChange} className="form-input" placeholder="Steel Bolt" required />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">Reorder Point<span className="form-help">The name of the item.</span></label>
+              <input type="text" name="reorderPoint" value={formData.reorderPoint} onChange={handleInputChange} className="form-input" placeholder="Steel Bolt" required />
+            </div>
+
+
+
+
+
+
+
           </div>
 
           <div className="modal-actions">

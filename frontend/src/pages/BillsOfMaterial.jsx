@@ -40,7 +40,7 @@ const BillsOfMaterial = () => {
       <div className="page-header">
         <div className="page-header-content">
           <div>
-            <h1 className="page-title">Bills of Material</h1>
+            <h1 className="page-title">Receipe Management</h1>
             <p className="page-subtitle">Manage product components and material lists</p>
           </div>
           <Link to="/bills-of-material/create" className="btn btn-primary">

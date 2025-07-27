@@ -485,3 +485,69 @@
     flex-direction: column;
   }
 }
+
+/* Additional styles for the new form fields */
+.form-section {
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.section-title {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.radio-group {
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.radio-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.info-text {
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 5px;
+  margin-left: 24px;
+}
+
+.dimensions-group {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.dimension-input {
+  flex: 1;
+  max-width: 100px;
+}
+
+.dimension-unit {
+  min-width: 80px;
+}
+
+.currency-input {
+  position: relative;
+}
+
+.currency-symbol {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666;
+}
